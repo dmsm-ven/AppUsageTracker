@@ -1,3 +1,4 @@
+using System.Windows.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace AppUsageTracker.Models;
@@ -16,6 +17,14 @@ public partial class AppUsageRecord : ObservableObject
 
     [ObservableProperty]
     private DateTime? endTime;
+
+    /// <summary>
+    /// The application's small icon, resolved (and cached) by
+    /// AppIconCache. Null until resolved, or if it couldn't be resolved
+    /// (e.g. an elevated process this app can't query).
+    /// </summary>
+    [ObservableProperty]
+    private ImageSource? iconSource;
 
     /// <summary>
     /// True while this record represents the currently active window

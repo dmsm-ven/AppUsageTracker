@@ -1,3 +1,4 @@
+using System.Windows.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace AppUsageTracker.Models;
@@ -9,6 +10,8 @@ namespace AppUsageTracker.Models;
 public partial class AppUsageSummary : ObservableObject
 {
     public string ProcessName { get; init; } = string.Empty;
+
+    public ImageSource? IconSource { get; init; }
 
     [ObservableProperty]
     private TimeSpan totalDuration;

@@ -79,7 +79,7 @@ public sealed class UsageTrackerService : IDisposable
         if (info is null)
             return;
 
-        var (processName, windowTitle, processId) = info.Value;
+        var (processName, windowTitle, processId, exePath) = info.Value;
 
         // Some apps (browsers, IDEs) fire foreground events on title-only
         // changes within the same process/window. We only want a new
@@ -89,14 +89,31 @@ public sealed class UsageTrackerService : IDisposable
 
         CloseCurrentSession();
 
+        var cachedIcon = AppIconCache.TryGetCached(processName);
         _current = new AppUsageRecord
         {
             ProcessName = processName,
             WindowTitle = windowTitle,
-            StartTime = DateTime.Now
+            StartTime = DateTime.Now,
+            IconSource = cachedIcon
         };
         _lastProcessId = processId;
         Records.Add(_current);
+
+        if (cachedIcon is null)
+        {
+            // Icon extraction touches disk/Win32 APIs, so resolve it off the
+            // UI thread; AppIconCache itself makes sure each app's icon is
+            // only ever extracted once (in memory, and on disk across app
+            // restarts).
+            var recordForIcon = _current;
+            Task.Run(() => AppIconCache.GetOrLoad(processName, exePath))
+                .ContinueWith(t =>
+                {
+                    if (t.Result is { } icon)
+                        recordForIcon.IconSource = icon;
+                }, TaskScheduler.FromCurrentSynchronizationContext());
+        }
     }
 
     private void CloseCurrentSession()

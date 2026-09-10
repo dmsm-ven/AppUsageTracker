@@ -73,7 +73,10 @@ public partial class MainViewModel : ObservableObject
             {
                 g.Key,
                 Total = g.Aggregate(TimeSpan.Zero, (acc, r) => acc + r.Duration),
-                Count = g.Count()
+                Count = g.Count(),
+                // Every record for this process shares the same cached
+                // icon once resolved; grab it from whichever one has it.
+                Icon = g.Select(r => r.IconSource).FirstOrDefault(icon => icon is not null)
             })
             .OrderByDescending(g => g.Total);
 
@@ -84,7 +87,8 @@ public partial class MainViewModel : ObservableObject
             {
                 ProcessName = g.Key,
                 TotalDuration = g.Total,
-                SessionCount = g.Count
+                SessionCount = g.Count,
+                IconSource = g.Icon
             });
         }
     }

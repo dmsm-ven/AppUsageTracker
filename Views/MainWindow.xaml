@@ -110,6 +110,15 @@
                           ColumnHeaderStyle="{DynamicResource MahApps.Styles.DataGridColumnHeader}"
                           RowStyle="{DynamicResource MahApps.Styles.DataGridRow}">
                     <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="" Width="28" CanUserResize="False">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding IconSource}" Width="16" Height="16"
+                                           HorizontalAlignment="Center" VerticalAlignment="Center"
+                                           RenderOptions.BitmapScalingMode="HighQuality" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                         <DataGridTextColumn Header="Application" Binding="{Binding ProcessName}" Width="140" />
                         <DataGridTextColumn Header="Window Title" Binding="{Binding WindowTitle}" Width="*" />
                         <DataGridTextColumn Header="Start" Binding="{Binding StartTime, StringFormat='HH:mm:ss'}" Width="80" />
@@ -130,6 +139,15 @@
                           ColumnHeaderStyle="{DynamicResource MahApps.Styles.DataGridColumnHeader}"
                           RowStyle="{DynamicResource MahApps.Styles.DataGridRow}">
                     <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="" Width="28" CanUserResize="False">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding IconSource}" Width="16" Height="16"
+                                           HorizontalAlignment="Center" VerticalAlignment="Center"
+                                           RenderOptions.BitmapScalingMode="HighQuality" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                         <DataGridTextColumn Header="Application" Binding="{Binding ProcessName}" Width="*" />
                         <DataGridTextColumn Header="Total"
                                              Binding="{Binding TotalDuration, Converter={StaticResource TimeSpanConverter}}"
