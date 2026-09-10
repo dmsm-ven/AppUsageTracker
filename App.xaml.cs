@@ -1,5 +1,6 @@
 using System.Windows;
 using AppUsageTracker.ViewModels;
+using Hardcodet.Wpf.TaskbarNotification;
 
 namespace AppUsageTracker;
 
@@ -12,6 +13,14 @@ public partial class App : Application
         if (MainWindow?.DataContext is MainViewModel vm)
         {
             vm.Shutdown();
+        }
+
+        // Belt-and-braces: make sure the tray icon is removed even if exit
+        // happened via a path other than the tray context menu's "Exit"
+        // (e.g. Task Manager, Windows sign-out).
+        if (MainWindow?.FindResource("TrayIcon") is TaskbarIcon trayIcon)
+        {
+            trayIcon.Dispose();
         }
 
         base.OnExit(e);
