@@ -18,8 +18,11 @@ shown both as a live session log and as totals aggregated per application.
   filters out sub-second flicker (e.g. quick alt-tabs) below
   `MinimumSessionLength`. A `DispatcherTimer` ticks once a second purely to
   refresh the *live* duration of the in-progress session in the UI.
-- **`Services/UsageDataStore.cs`** persists each completed session as JSON
-  under `%AppData%\AppUsageTracker\history\yyyy-MM-dd.json`, one file per day.
+- **`Services/UsageDataStore.cs`** persists each completed session to a
+  SQLite database at `%AppData%\AppUsageTracker\usage.db`, so history
+  survives closing the app and isn't split across separate day files. If an
+  older install's `history\*.json` files are still present, they're
+  imported into the database automatically the first time it runs.
 - **`ViewModels/MainViewModel.cs`** is a `CommunityToolkit.Mvvm`
   `ObservableObject` with `[ObservableProperty]` / `[RelayCommand]` source
   generators, exposing `SessionRecords` (raw sessions) and `Summaries`

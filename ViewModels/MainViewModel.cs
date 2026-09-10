@@ -39,6 +39,35 @@ public partial class MainViewModel : ObservableObject
         _tracker.Ticked += RefreshSummaries;
         _tracker.SessionCompleted += OnSessionCompleted;
         _tracker.Records.CollectionChanged += (_, _) => RefreshSummaries();
+
+        LoadTodaysHistory();
+    }
+
+    /// <summary>
+    /// Restores today's already-completed sessions from the database into
+    /// the UI on startup, so closing and reopening the app doesn't make it
+    /// look like the day's history disappeared.
+    /// </summary>
+    private void LoadTodaysHistory()
+    {
+        foreach (var record in _dataStore.LoadDay(DateTime.Now))
+        {
+            record.IconSource = AppIconCache.TryGetCached(record.ProcessName);
+            _tracker.Records.Add(record);
+
+            if (record.IconSource is null)
+            {
+                var target = record;
+                Task.Run(() => AppIconCache.GetOrLoad(record.ProcessName, exePath: null))
+                    .ContinueWith(t =>
+                    {
+                        if (t.Result is { } icon)
+                            target.IconSource = icon;
+                    }, TaskScheduler.FromCurrentSynchronizationContext());
+            }
+        }
+
+        RefreshSummaries();
     }
 
     [RelayCommand(CanExecute = nameof(CanStart))]
