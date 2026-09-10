@@ -19,7 +19,7 @@ public partial class MainWindow : Window
 
     private TaskbarIcon TrayIcon => (TaskbarIcon)FindResource("TrayIcon");
 
-    private void MetroWindow_StateChanged(object sender, EventArgs e)
+    private void MainWindow_StateChanged(object sender, EventArgs e)
     {
         if (WindowState == WindowState.Minimized)
         {
@@ -27,7 +27,7 @@ public partial class MainWindow : Window
         }
     }
 
-    private void MetroWindow_Closing(object sender, CancelEventArgs e)
+    private void MainWindow_Closing(object sender, CancelEventArgs e)
     {
         if (_isExiting)
             return;

@@ -8,8 +8,8 @@
         Title="App Usage Tracker" Height="500" Width="960"
         WindowStartupLocation="CenterScreen"
         Icon="/Resources/app.ico"
-        StateChanged="MetroWindow_StateChanged"
-        Closing="MetroWindow_Closing">
+        StateChanged="MainWindow_StateChanged"
+        Closing="MainWindow_Closing">
 
     <Window.DataContext>
         <vm:MainViewModel />
@@ -29,16 +29,9 @@
                          TrayMouseDoubleClick="TrayIcon_DoubleClick">
             <tb:TaskbarIcon.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="Show App Usage Tracker" Click="TrayShow_Click" FontWeight="SemiBold" />
-                    <Separator />
-                    <MenuItem Header="Start Tracking" Command="{Binding StartTrackingCommand}">
+                    <MenuItem Header="Show" Click="TrayShow_Click">
                         <MenuItem.Icon>
-                            <iconPacks:PackIconMaterial Kind="Play" Width="14" Height="14" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Header="Stop Tracking" Command="{Binding StopTrackingCommand}">
-                        <MenuItem.Icon>
-                            <iconPacks:PackIconMaterial Kind="Stop" Width="14" Height="14" />
+                            <iconPacks:PackIconMaterial Kind="WindowRestore" Width="14" Height="14" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <Separator />
