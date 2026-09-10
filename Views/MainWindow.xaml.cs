@@ -2,11 +2,10 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 using Hardcodet.Wpf.TaskbarNotification;
-using MahApps.Metro.Controls;
 
 namespace AppUsageTracker.Views;
 
-public partial class MainWindow : MetroWindow
+public partial class MainWindow : Window
 {
     // True only when the user has actually chosen "Exit" from the tray menu
     // (or Windows itself is shutting down). Otherwise closing the window
