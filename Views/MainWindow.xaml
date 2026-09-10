@@ -61,7 +61,9 @@
         </Grid.RowDefinitions>
 
         <!-- Top toolbar -->
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,12">
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,12"
+                    Background="Transparent"
+                    MouseLeftButtonDown="Toolbar_MouseLeftButtonDown">
             <Button Command="{Binding StartTrackingCommand}"
                     Style="{StaticResource MahApps.Styles.Button.Square.Accent}"
                     Padding="14,7" Margin="0,0,8,0">
