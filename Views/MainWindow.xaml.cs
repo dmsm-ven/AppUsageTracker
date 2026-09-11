@@ -15,6 +15,12 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+
+        // TrayIcon is declared as a resource, not placed in the visual
+        // tree, so its Loaded event never fires and the native icon would
+        // otherwise never actually get created. ForceCreate() makes sure
+        // it shows up immediately instead of silently never appearing.
+        TrayIcon.ForceCreate();
     }
 
     private TaskbarIcon TrayIcon => (TaskbarIcon)FindResource("TrayIcon");
@@ -40,6 +46,8 @@ public partial class MainWindow : Window
     }
 
     private void TrayIcon_DoubleClick(object sender, RoutedEventArgs e) => RestoreFromTray();
+
+    private void TrayIcon_LeftClick(object sender, RoutedEventArgs e) => RestoreFromTray();
 
     private void TrayShow_Click(object sender, RoutedEventArgs e) => RestoreFromTray();
 

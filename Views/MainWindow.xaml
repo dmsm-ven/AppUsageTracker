@@ -23,10 +23,10 @@
              window instead of closing it, and this icon is how the user
              gets back to it (or exits for real). -->
         <tb:TaskbarIcon x:Key="TrayIcon"
-                         x:Name="TrayIcon"
                          IconSource="/Resources/app.ico"
                          ToolTipText="App Usage Tracker"
-                         TrayMouseDoubleClick="TrayIcon_DoubleClick">
+                         TrayMouseDoubleClick="TrayIcon_DoubleClick"
+                         TrayLeftMouseUp="TrayIcon_LeftClick">
             <tb:TaskbarIcon.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Show" Click="TrayShow_Click">
