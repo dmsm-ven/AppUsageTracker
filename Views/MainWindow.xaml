@@ -109,10 +109,8 @@
                 <DataGrid ItemsSource="{Binding SessionRecords}" AutoGenerateColumns="False"
                           IsReadOnly="True" CanUserAddRows="False" GridLinesVisibility="Horizontal"
                           Style="{DynamicResource MahApps.Styles.DataGrid}"
-                          CellStyle="{DynamicResource MahApps.Styles.DataGridCell}"
                           ColumnHeaderStyle="{DynamicResource MahApps.Styles.DataGridColumnHeader}"
-                          RowStyle="{DynamicResource MahApps.Styles.DataGridRow}"
-                          Background="#CCFFFFFF"
+                          Background="#B3FFFFFF"
                           RowBackground="Transparent"
                           AlternatingRowBackground="#14000000">
                     <DataGrid.Columns>
@@ -142,10 +140,8 @@
                 <DataGrid ItemsSource="{Binding Summaries}" AutoGenerateColumns="False"
                           IsReadOnly="True" CanUserAddRows="False" GridLinesVisibility="Horizontal"
                           Style="{DynamicResource MahApps.Styles.DataGrid}"
-                          CellStyle="{DynamicResource MahApps.Styles.DataGridCell}"
                           ColumnHeaderStyle="{DynamicResource MahApps.Styles.DataGridColumnHeader}"
-                          RowStyle="{DynamicResource MahApps.Styles.DataGridRow}"
-                          Background="#CCFFFFFF"
+                          Background="#B3FFFFFF"
                           RowBackground="Transparent"
                           AlternatingRowBackground="#14000000">
                     <DataGrid.Columns>
