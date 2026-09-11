@@ -33,7 +33,7 @@
                         </GeometryDrawing>
                         <GeometryDrawing>
                             <GeometryDrawing.Pen>
-                                <Pen Brush="#22A9C6E0" Thickness="1" />
+                                <Pen Brush="#33A9C6E0" Thickness="1" />
                             </GeometryDrawing.Pen>
                             <GeometryDrawing.Geometry>
                                 <LineGeometry StartPoint="0,31.5" EndPoint="32,31.5" />

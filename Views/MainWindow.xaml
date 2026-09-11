@@ -104,13 +104,17 @@
             </Grid.ColumnDefinitions>
 
             <GroupBox Header="Session log (today)" Grid.Column="0"
-                      Style="{DynamicResource MahApps.Styles.GroupBox}">
+                      Style="{DynamicResource MahApps.Styles.GroupBox}"
+                      Background="Transparent">
                 <DataGrid ItemsSource="{Binding SessionRecords}" AutoGenerateColumns="False"
                           IsReadOnly="True" CanUserAddRows="False" GridLinesVisibility="Horizontal"
                           Style="{DynamicResource MahApps.Styles.DataGrid}"
                           CellStyle="{DynamicResource MahApps.Styles.DataGridCell}"
                           ColumnHeaderStyle="{DynamicResource MahApps.Styles.DataGridColumnHeader}"
-                          RowStyle="{DynamicResource MahApps.Styles.DataGridRow}">
+                          RowStyle="{DynamicResource MahApps.Styles.DataGridRow}"
+                          Background="#CCFFFFFF"
+                          RowBackground="Transparent"
+                          AlternatingRowBackground="#14000000">
                     <DataGrid.Columns>
                         <DataGridTemplateColumn Header="" Width="28" CanUserResize="False">
                             <DataGridTemplateColumn.CellTemplate>
@@ -133,13 +137,17 @@
             </GroupBox>
 
             <GroupBox Header="Total time by application" Grid.Column="2"
-                      Style="{DynamicResource MahApps.Styles.GroupBox}">
+                      Style="{DynamicResource MahApps.Styles.GroupBox}"
+                      Background="Transparent">
                 <DataGrid ItemsSource="{Binding Summaries}" AutoGenerateColumns="False"
                           IsReadOnly="True" CanUserAddRows="False" GridLinesVisibility="Horizontal"
                           Style="{DynamicResource MahApps.Styles.DataGrid}"
                           CellStyle="{DynamicResource MahApps.Styles.DataGridCell}"
                           ColumnHeaderStyle="{DynamicResource MahApps.Styles.DataGridColumnHeader}"
-                          RowStyle="{DynamicResource MahApps.Styles.DataGridRow}">
+                          RowStyle="{DynamicResource MahApps.Styles.DataGridRow}"
+                          Background="#CCFFFFFF"
+                          RowBackground="Transparent"
+                          AlternatingRowBackground="#14000000">
                     <DataGrid.Columns>
                         <DataGridTemplateColumn Header="" Width="28" CanUserResize="False">
                             <DataGridTemplateColumn.CellTemplate>
