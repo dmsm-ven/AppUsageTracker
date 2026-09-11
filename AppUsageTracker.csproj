@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <Resource Include="Resources\app.ico" />
+    <Resource Include="Resources\notebook-texture.png" />
   </ItemGroup>
 
 </Project>

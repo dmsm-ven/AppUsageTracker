@@ -9,8 +9,15 @@
         WindowStartupLocation="CenterScreen"
         Icon="/Resources/app.ico"
         StateChanged="MainWindow_StateChanged"
-        Closing="MainWindow_Closing"
-        Background="{StaticResource NotebookBackgroundBrush}">
+        Closing="MainWindow_Closing">
+
+    <Window.Background>
+        <ImageBrush ImageSource="/Resources/notebook-texture.png"
+                    TileMode="FlipXY"
+                    Viewport="0,0,128,128"
+                    ViewportUnits="Absolute"
+                    Stretch="Fill" />
+    </Window.Background>
 
     <Window.DataContext>
         <vm:MainViewModel />
