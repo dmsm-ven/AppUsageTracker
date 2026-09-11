@@ -9,7 +9,8 @@
         WindowStartupLocation="CenterScreen"
         Icon="/Resources/app.ico"
         StateChanged="MainWindow_StateChanged"
-        Closing="MainWindow_Closing">
+        Closing="MainWindow_Closing"
+        Background="{StaticResource NotebookBackgroundBrush}">
 
     <Window.DataContext>
         <vm:MainViewModel />
@@ -85,6 +86,13 @@
                                          Foreground="{Binding IsTracking, Converter={StaticResource TrackingStateBrushConverter}}" />
             <TextBlock Text="{Binding StatusText}" VerticalAlignment="Center"
                        FontWeight="SemiBold" />
+
+            <Button Click="OpenSettings_Click"
+                    Style="{StaticResource MahApps.Styles.Button.Square}"
+                    Padding="8,6" Margin="16,0,0,0"
+                    ToolTip="Settings">
+                <iconPacks:PackIconMaterial Kind="Cog" Width="16" Height="16" />
+            </Button>
         </StackPanel>
 
         <!-- Two panes: live session log + aggregated totals -->

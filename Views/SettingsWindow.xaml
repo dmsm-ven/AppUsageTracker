@@ -1,0 +1,21 @@
+<Window x:Class="AppUsageTracker.Views.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:AppUsageTracker.ViewModels"
+        Title="Settings"
+        SizeToContent="WidthAndHeight"
+        MinWidth="300"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False">
+
+    <Window.DataContext>
+        <vm:SettingsViewModel />
+    </Window.DataContext>
+
+    <Grid Margin="20">
+        <CheckBox Content="Open on system start"
+                  IsChecked="{Binding OpenOnSystemStart}"
+                  Style="{DynamicResource MahApps.Styles.CheckBox}" />
+    </Grid>
+</Window>

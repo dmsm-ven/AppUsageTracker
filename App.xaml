@@ -13,6 +13,35 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Blue.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <!-- Seamless, tileable notebook-paper texture used as the main
+                 window's background: a soft paper fill with faint ruled
+                 lines, built as vector geometry (not an image) so it stays
+                 crisp at any window size or DPI. Defined at the app level
+                 so it's guaranteed to be loaded before any window that
+                 references it. -->
+            <DrawingBrush x:Key="NotebookBackgroundBrush"
+                          TileMode="Tile"
+                          Viewport="0,0,32,32" ViewportUnits="Absolute"
+                          Stretch="None">
+                <DrawingBrush.Drawing>
+                    <DrawingGroup>
+                        <GeometryDrawing Brush="#FFFCFBF7">
+                            <GeometryDrawing.Geometry>
+                                <RectangleGeometry Rect="0,0,32,32" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing>
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#22A9C6E0" Thickness="1" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <LineGeometry StartPoint="0,31.5" EndPoint="32,31.5" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+                </DrawingBrush.Drawing>
+            </DrawingBrush>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

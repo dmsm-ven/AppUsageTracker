@@ -60,6 +60,12 @@ public partial class MainWindow : Window
     /// <summary>Called from App.OnExit as a belt-and-braces cleanup for exit paths other than the tray menu's "Exit".</summary>
     public void DisposeTrayIcon() => TrayIcon.Dispose();
 
+    private void OpenSettings_Click(object sender, RoutedEventArgs e)
+    {
+        var settingsWindow = new SettingsWindow { Owner = this };
+        settingsWindow.ShowDialog();
+    }
+
     // Fallback so the window can always be dragged by its toolbar, in case
     // the native MetroWindow title-bar chrome isn't draggable in your
     // environment (e.g. a MahApps/IconPacks version mismatch). Only fires
