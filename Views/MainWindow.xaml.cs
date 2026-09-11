@@ -1,7 +1,6 @@
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
-using Hardcodet.Wpf.TaskbarNotification;
 
 namespace AppUsageTracker.Views;
 
@@ -15,15 +14,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-
-        // TrayIcon is declared as a resource, not placed in the visual
-        // tree, so its Loaded event never fires and the native icon would
-        // otherwise never actually get created. ForceCreate() makes sure
-        // it shows up immediately instead of silently never appearing.
-        TrayIcon.ForceCreate();
     }
-
-    private TaskbarIcon TrayIcon => (TaskbarIcon)FindResource("TrayIcon");
 
     private void MainWindow_StateChanged(object sender, EventArgs e)
     {
@@ -65,6 +56,9 @@ public partial class MainWindow : Window
         Close();
         Application.Current.Shutdown();
     }
+
+    /// <summary>Called from App.OnExit as a belt-and-braces cleanup for exit paths other than the tray menu's "Exit".</summary>
+    public void DisposeTrayIcon() => TrayIcon.Dispose();
 
     // Fallback so the window can always be dragged by its toolbar, in case
     // the native MetroWindow title-bar chrome isn't draggable in your

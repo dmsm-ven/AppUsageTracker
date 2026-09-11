@@ -18,11 +18,21 @@
     <Window.Resources>
         <conv:TimeSpanToStringConverter x:Key="TimeSpanConverter" />
         <conv:BoolToTrackingBrushConverter x:Key="TrackingStateBrushConverter" />
+    </Window.Resources>
+
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
         <!-- Lives for the lifetime of the window; minimizing hides the
              window instead of closing it, and this icon is how the user
-             gets back to it (or exits for real). -->
-        <tb:TaskbarIcon x:Key="TrayIcon"
+             gets back to it (or exits for real). Placed directly in the
+             visual tree (rather than as a resource) so its Loaded event
+             actually fires and the native tray icon gets created. -->
+        <tb:TaskbarIcon x:Name="TrayIcon"
+                         Grid.Row="0"
                          IconSource="/Resources/app.ico"
                          ToolTipText="App Usage Tracker"
                          TrayMouseDoubleClick="TrayIcon_DoubleClick"
@@ -43,13 +53,6 @@
                 </ContextMenu>
             </tb:TaskbarIcon.ContextMenu>
         </tb:TaskbarIcon>
-    </Window.Resources>
-
-    <Grid Margin="12">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
 
         <!-- Top toolbar -->
         <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,12"
